@@ -53,8 +53,3 @@ body {
   /* no focus in chromium */
   outline: none;
 }
-
-::-moz-focus-inner {
-    /* no focus in firefox */
-    border: 0;
-}
