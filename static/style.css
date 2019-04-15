@@ -6,7 +6,8 @@ body {
   align-items: center;
   justify-content: center;
   background: linear-gradient(to bottom right, #1abc9c, #34495e);
-  font-family: Montserrat, sans-serif;
+  scrollbar-color: hsl(0, 0%, 46%) hsl(0, 0%, 30%);
+  font-family: 'Montserrat', 'Verdana', 'Tahoma', 'Gill Sans MT', sans-serif;
 }
 
 #container {
@@ -15,6 +16,24 @@ body {
   border-radius: 2px;
   box-shadow: 2px 2px 24px hsla(0, 0%, 8%, .3);
   padding-bottom: 3vh;
+  animation: .65s containerIn ease;
+}
+@keyframes containerIn {
+  0% {
+    opacity: 0;
+    transform: scale(.94);
+  }
+  25% {
+    transform: scaleX(1.035) scaleY(1.03);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(.98) scaleY(.99);
+  }
+  75% {
+    opacity: 1;
+    transform: scaleX(1.01) scaleY(1.005);
+  }
 }
 
 #heading {
@@ -36,7 +55,8 @@ body {
   width: 100%;
   min-height: 2.8rem;
   padding: .5rem 1.2rem;
-  border-radius: 100px;
+  border-radius: 25px;
+  box-shadow: 1px 1px 12px hsla(0, 0%, 12%, .15);
   box-sizing: border-box;
 }
 
@@ -69,6 +89,8 @@ body {
 }
 
 #output {
+  max-height: 50vh;
+  overflow: auto;
   margin-top: 1rem;
   font-size: 1.1em;
   background-color: hsl(0, 0%, 22%);
