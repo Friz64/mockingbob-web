@@ -52,9 +52,11 @@ impl Renderable<Model> for Model {
     fn view(&self) -> Html<Self> {
         html! {
             <div id="container",>
-                <h1 id="heading",>{ "Mockingbob Generator" }</h1>
-                <input type="text", id="input", oninput=|event| Msg::Input(event), />
-                <h1 id="output",>{ self.mock() }</h1>
+              <h1 id="heading",>{ "Mockingbob Generator" }</h1>
+              <div id="wrapper",>
+                <input type="text", id="input", class="line", oninput=|event| Msg::Input(event), />
+                <div id="output", class="line",>{ self.mock() }</div>
+              </div>
             </div>
         }
     }
