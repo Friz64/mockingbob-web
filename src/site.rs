@@ -10,11 +10,12 @@ pub struct Model {
 }
 
 impl Model {
-    fn space(&self) -> String {
+    fn mock(&self) -> String {
         self.input
             .chars()
-            .map(|c| {
-                if rand::random() {
+            .enumerate()
+            .map(|(i, c)| {
+                if i % 2 == 0 {
                     c.to_uppercase().to_string()
                 } else {
                     c.to_lowercase().to_string()
@@ -53,7 +54,7 @@ impl Renderable<Model> for Model {
             <div id="container",>
                 <h1 id="heading",>{ "Mockingbob Generator" }</h1>
                 <input type="text", id="input", oninput=|event| Msg::Input(event), />
-                <h1 id="output",>{ self.space() }</h1>
+                <h1 id="output",>{ self.mock() }</h1>
             </div>
         }
     }
