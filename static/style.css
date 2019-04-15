@@ -1,55 +1,82 @@
 body {
-  background-color: #2E3131;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #1abc9c, #34495e);
   font-family: Montserrat, sans-serif;
 }
 
 #container {
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 800px;
-  background-color: white;
-  border-radius: 15px;
-  border: 2px solid black;
+  max-width: 80vw;
+  background-color: hsl(0, 0%, 14%);
+  border-radius: 2px;
+  box-shadow: 2px 2px 24px hsla(0, 0%, 8%, .3);
+  padding-bottom: 3vh;
 }
 
 #heading {
-  margin: 20px;
-  font-size: 3.5rem;
-  color: black;
+  margin: 0 0 .4em;
+  padding: 3vh 3vw .25em;
+  background-color: hsl(0, 0%, 16%);
+  color: hsl(0, 0%, 80%);
+  font-size: 3.5em;
   text-align: center;
+}
+
+#wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  min-height: 2.8rem;
+  padding: .5rem 1.2rem;
+  border-radius: 100px;
+  box-sizing: border-box;
 }
 
 #input {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  width: 80%;
-  font-size: 1.5rem;
-  padding: 5px;
-  text-align: center;
-  background-color: #E2E2E2;
-  color: black;
-  border: 2px solid black;
-  border-radius: inherit;
+  font-size: 1.4em;
+  background-color: hsl(0, 0%, 26%);
+  color: hsl(0, 0%, 85%);
+  border: none;
+  transition: all .15s ease;
+}
+#input:focus {
+  outline: none;
+  background-color: hsl(0, 0%, 27.8%);
+  box-shadow: 2px 2px 18px hsla(0, 0%, 10%, .25);
+}
+#input::placeholder {
+  color: hsl(0, 0%, 70%);
+}
+#input::-moz-placeholder {
+  color: hsl(0, 0%, 70%);
+}
+#input::-webkit-input-placeholder {
+  color: hsl(0, 0%, 70%);
+}
+#input::-ms-input-placeholder {
+  color: hsl(0, 0%, 70%);
+}
+#input:-ms-input-placeholder {
+  color: hsl(0, 0%, 70%);
 }
 
 #output {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  font-size: 1.2rem;
-  padding: 10px;
-  width: 80%;
-  background-color: grey;
+  margin-top: 1rem;
+  font-size: 1.1em;
+  background-color: hsl(0, 0%, 22%);
+  color: hsl(0, 0%, 75%);
+  user-select: all;
+  -ms-user-select: all;
+  -moz-user-select: all;
+  -webkit-user-select: all;
   word-wrap: break-word;
   white-space: pre-wrap;
-  border-radius: inherit;
-}
-
-:focus {
-  /* no focus in chromium */
-  outline: none;
 }
