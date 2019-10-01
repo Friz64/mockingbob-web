@@ -30,8 +30,17 @@ impl Component for Model {
     type Properties = ();
 
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        let hash = js! {
+            return location.hash;
+        };
+        let input = parse_hash(&hash.into_string().unwrap());
+        let title = format!("Mockingbob Generator: {}", input);
+        js! { @(no_return)
+            document.title = @{title};
+        }
+
         Model {
-            input: String::new(),
+            input: input,
             console: ConsoleService::new(),
         }
     }
@@ -41,7 +50,11 @@ impl Component for Model {
             Msg::Input(data) => {
                 self.console
                     .log(&format!("Input changed to: {}", data.value));
-                self.input = data.value;
+                let new_title = format!("Mockingbob Generator: {}", self.input);
+                js ! { @(no_return)
+                    history.pushState(null, @{new_title}, "#" + @{self.input});
+                    document.title = @{new_title};
+                }
                 true
             }
         }
@@ -60,4 +73,14 @@ impl Renderable<Model> for Model {
             </div>
         }
     }
+}
+
+fn parse_hash(hash: &str) -> String {
+    let mut split = hash.split('#').skip(1);
+
+    let input: String = split.next().unwrap_or_default().into();
+    let input_decoded =
+        percent_encoding::percent_decode(input.as_bytes()).decode_utf8_lossy();
+
+    input_decoded.into()
 }
